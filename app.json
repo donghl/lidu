@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/form/form",
+    "pages/logs/logs",
+    "pages/about/about",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "力度家园",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "blue",
+    "selectcColor": "#p001",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index.png"
+      },
+      {
+        "pagePath": "pages/form/form",
+        "text": "调查",
+        "iconPath": "images/detail.png",
+        "selectedIconPath": "images/detail.png"
+      },
+      {
+        "pagePath": "pages/detail/detail",
+        "text": "汇总",
+        "iconPath": "images/detail.png",
+        "selectedIconPath": "images/detail.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath": "images/log.png",
+        "selectedIconPath": "images/log.png"
+      }
+    ]
+  }
+}

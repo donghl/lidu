@@ -1,0 +1,20 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+ <view> {{ text }} </view>
+ 
+  <view >
+    <view >关于力度小区物业费涨价的民意调查</view>
+    <radio-group name="radio-group">
+      <label class="home-text1"><radio value="r1"/>同意涨价10%方案</label><br/>
+      <label class="home-text1"><radio value="r1"/>同意涨价20%方案</label><br/>
+      <label class="home-text1"><radio value="r1"/>不同意涨价</label>  <br/>
+      <label class="home-text1"><radio value="r1"/>同意先成立业委会，再商议涨价事宜</label> <br/>
+    </radio-group>
+  </view>
+ 
+  <view >
+    <button  formType="submit" type="primary" plain class="btn">Submit</button>
+    <button  formType="reset"  type="primary" plain class="btn">Reset</button>
+    提示：{{text}} 
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> </button>
+  </view>
+</form>
