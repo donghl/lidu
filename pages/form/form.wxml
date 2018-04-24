@@ -1,5 +1,11 @@
 <!--pages/form/form.wxml-->
-<text>pages/form/form.wxml</text>
+
+   <button bindtap='getOpenIdTap' >获取用户唯一标识openid</button>  
+   openid:
+   <text class="home-text1">{{openid}}</text>
+   session_key:
+   <text class="home-text1">{{session_key}} </text>
+     <button bindtap='chooseImage' >选择图片</button>  
 <!--最外层-->
 <view class="home-view1">
   <!--图片层-->
@@ -8,7 +14,7 @@
   </view>
  
   <!--描述层-->
-  <text class="home-text1">小巧可爱的案头雅物小巧可爱的案头雅物小巧可爱的案头雅物小巧可爱的案头雅物小巧可爱的案头雅物</text>
+  <text class="home-text1">小巧可爱的案头雅物</text>
  
   <!--信息层-->
   <view class="home-view3"> 
@@ -18,13 +24,12 @@
       <text class="home-text-heart bgColor" > 22</text>
     </view>
     <text class="home-text-time" ></text>
+
   </view>
  
   <!--分界线line-->
   <view class="home-view-line"></view>
  
- 
- 
- 
+  
  
 </view>

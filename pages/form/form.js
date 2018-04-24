@@ -62,5 +62,61 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  chooseImage:function(){
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      // sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        console.log(res)
+        var tempFilePaths = res.tempFilePaths;
+        console.log(tempFilePaths);
+
+
+      }
+    })
+  },
+
+
+  getOpenIdTap:function(){
+    console.log('getOpenIdTap');
+    var that = this;  
+
+    wx.login({
+      success: function (res) {
+        var appid = 'wxf3a5ff254b032068'; //填写微信小程序appid  
+        var secret = 'c6df8a093125033437ceb82e7d5ddc34'; //填写微信小程序secret  
+        console.log(res.code);
+
+        if (res.code) {
+          var code = res.code;
+          wx.getUserInfo({
+            success: function (res) {
+              var simpleUser = res.userInfo;
+              console.log(res);
+              console.log(simpleUser.nickName);
+
+              wx.request({
+                method: 'GET',
+                url: 'https://www.donghl.cn/api/v1/wx',
+                data: { code, appid, secret},
+                header: {
+                  'content-type': 'application/json'
+                },
+                success: function (res) {
+                  console.log(res.data) //获取openid  
+                  that.setData({
+                    openid: res.data.data.openid,
+                    session_key: res.data.data.session_key
+                  })
+                }
+              })
+            }
+          });
+        }
+      }
+    });
+  },
 })

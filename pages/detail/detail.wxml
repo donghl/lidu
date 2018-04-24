@@ -2,18 +2,25 @@
  <view> {{ text }} </view>
  
   <view >
-    <view >关于力度小区物业费涨价的民意调查</view>
-    <radio-group name="radio-group">
+    <!-- <view >关于力度小区物业费涨价的民意调查</view>
+    <radio-group name="radio-group" bindchange="listenerRadioGroup">
       <label class="home-text1"><radio value="r1"/>同意涨价10%方案</label><br/>
-      <label class="home-text1"><radio value="r1"/>同意涨价20%方案</label><br/>
-      <label class="home-text1"><radio value="r1"/>不同意涨价</label>  <br/>
-      <label class="home-text1"><radio value="r1"/>同意先成立业委会，再商议涨价事宜</label> <br/>
-    </radio-group>
+      <label class="home-text1"><radio value="r2"/>同意涨价20%方案</label><br/>
+      <label class="home-text1"><radio value="r3"/>不同意涨价</label>  <br/>
+      <label class="home-text1"><radio value="r4"/>同意先成立业委会，再商议涨价事宜</label> <br/>
+    </radio-group> -->
+
+    <radio-group name="radio-group" bindchange="listenerRadioGroup">
+      <label style="display: flex" wx:for-items="{{array}}">
+          <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+      </label>
+  </radio-group>
+
   </view>
  
   <view >
-    <button  formType="submit" type="primary" plain class="btn">Submit</button>
-    <button  formType="reset"  type="primary" plain class="btn">Reset</button>
+    <button  formType="submit" type="primary" plain class="btn" bindtap='submit'>Submit</button>
+    <button  formType="reset"  type="primary" plain class="btn" bindtap='reset'>Reset</button>
     提示：{{text}} 
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> </button>
   </view>

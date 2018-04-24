@@ -1,19 +1,25 @@
 // pages/detail/detail.js
 Page({
-
-
   /**
    * 页面的初始数据
    */
   data: {
-   text:"这是一个页面"
+   text:"这是一个页面",
+   array: [
+     { name: 'Android', value: '1', checked: 'true' },
+     { name: 'IOS-C', value: '2' },
+     { name: 'ReactNative', value: '3' },
+     { name: 'WeChat', value: '4' },
+     { name: 'Web', value: '5' },
+   ]
   },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('----------  detail   onLoad --------------------')
+    console.log('----------  detail onLoad --------------------')
     wx.getLocation({
       type: 'wgs84',
       success: (res) => {
@@ -86,6 +92,29 @@ Page({
     console.log('onShareAppMessage')
   },
 
+  listenerRadioGroup:function(e) {
+      console.log(e);
+  },
+
+  submit:function(e){
+    console.log('-------------------- detail   submit --------------------')
+    console.log(e);
+    // wx.request({
+    //   method: 'POST',
+    //   url: 'https://www.donghl.cn/api/v1/login', //
+    //   data: { "username": "aaa", "password": "12345678" },
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data)
+    //   }
+    // })
+  },
+
+  reset: function (e) {
+    console.log('-------------------- detail   reset -------------------- ')
+  },
 
   getPhoneNumber: function (e) {
     console.log(e.detail.errMsg)

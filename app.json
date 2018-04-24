@@ -24,9 +24,9 @@
       },
       {
         "pagePath": "pages/form/form",
-        "text": "调查",
-        "iconPath": "images/detail.png",
-        "selectedIconPath": "images/detail.png"
+        "text": "业委会",
+        "iconPath": "images/account.png",
+        "selectedIconPath": "images/account.png"
       },
       {
         "pagePath": "pages/detail/detail",
