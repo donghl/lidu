@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    openid:null
   },
 
   /**
@@ -13,6 +13,11 @@ Page({
    */
   onLoad: function (options) {
     console.log('---------- form --------------------')
+    var Obj = wx.getStorageSync('Obj') || []
+    console.log(Obj);
+    this.setData({
+      openid:Obj.openid
+    })
   },
 
   /**
@@ -64,17 +69,65 @@ Page({
   
   },
   chooseImage:function(){
+    var that = this;
+
+    that.setData({
+      progress: 0
+    })
+
     wx.chooseImage({
-      count: 1, // 默认9
+      count: 9, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      // sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         console.log(res)
+
         var tempFilePaths = res.tempFilePaths;
         console.log(tempFilePaths);
+        console.log(that.data.openid);
 
+        var uploadImgCount = 0;  
+        for (var i = 0, h = tempFilePaths.length; i < h; i++) {  
+          const uploadTask = wx.uploadFile({
+            url: 'https://www.donghl.cn/upload-single', //仅为示例，非真实的接口地址 
+            filePath: tempFilePaths[i],
+            name: 'myfile',
+            formData: {
+              'openid': that.data.openid
+            },
+            header: {
+              "Content-Type": "multipart/form-data"
+            },  
+            success: function (res) {
+              uploadImgCount++;
+              var data = res.data
+              //do something
+              console.log(data)
+              console.log(res.statusCode)
+              if (res.statusCode != 200){
+                wx.hideToast();
+                wx.showModal({
+                  title: '错误提示',
+                  content: '上传图片失败',
+                  showCancel: false,
+                  success: function (res) { 
+                  }
+                })
+              }
+            }
+          })
 
+          uploadTask.onProgressUpdate((res) => {
+            console.log('上传进度', res.progress),
+              that.setData({
+                progress: res.progress
+              })
+            console.log('已经上传的数据长度', res.totalBytesSent)
+            console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+          })
+
+        }
       }
     })
   },

@@ -1,20 +1,17 @@
 <!--pages/form/form.wxml-->
 
-   <button bindtap='getOpenIdTap' >获取用户唯一标识openid</button>  
-   openid:
-   <text class="home-text1">{{openid}}</text>
-   session_key:
-   <text class="home-text1">{{session_key}} </text>
-     <button bindtap='chooseImage' >选择图片</button>  
+
 <!--最外层-->
 <view class="home-view1">
+  <!--描述层-->
+  <text class="home-text1">委员风采</text>
+
   <!--图片层-->
   <view class="home-view2">
-    <image class="home-image1" src="http://qty83k.creatby.com/materials/origin/640e31829b8776967dedc670b5427d0f_origin.jpg"></image>
+    <image class="home-image1" mode="aspectFit" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2884270306,2522781068&fm=11&gp=0.jpg"></image>
   </view>
  
-  <!--描述层-->
-  <text class="home-text1">小巧可爱的案头雅物</text>
+
  
   <!--信息层-->
   <view class="home-view3"> 
@@ -29,7 +26,23 @@
  
   <!--分界线line-->
   <view class="home-view-line"></view>
- 
+  <progress 
+  percent="{{progress}}" 
+  show-info="true" 
+  color="red" 
+  stroke-width="10" 
+  activeColor="green" 
+  backgroundColor="#ccc" 
+  />
+    <button bindtap='chooseImage' >选择图片</button>  
+  
+  <view class="home-view-line"></view>
+
+     <button bindtap='getOpenIdTap' >获取用户唯一标识openid</button>  
+   openid:
+   <text class="home-text1">{{openid}}</text>
+   session_key:
+   <text class="home-text1">{{session_key}} </text>
   
  
 </view>
